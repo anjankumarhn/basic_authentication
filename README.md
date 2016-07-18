@@ -142,13 +142,13 @@ Filter in application controller
 
 #Contributor
 
-[Facebook][1]
+[Facebook][1]{:target="_blank"}
 
-[Twitter][2]
+[Twitter][2]{:target="_blank"}
 
-[Linkedin][3]
+[Linkedin][3]{:target="_blank"}
 
-[About Me][4]
+[About Me][4]{:target="_blank"}
 
 [1]: https://www.facebook.com/anjan.gowdamandya
 [2]: https://twitter.com/aknagaraja
