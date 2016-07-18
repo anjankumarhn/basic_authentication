@@ -68,6 +68,11 @@ Create a new folder users under apps/views & add a new.html.erb template for for
   </div>
 </div>
 ```
+Add a bcrypt password secure method in User model
+
+```
+has_secure_password
+```
 
 Create a server side validation for User columns in User model.
 
@@ -124,7 +129,7 @@ resources :sessions, :only => [:new, :create, :destroy]
 
 Added a new, create & destroy action in sessions controller
 
-Create a sign in form in sessions new template app/views/sessions/new
+Create a sign in form in sessions new template app/views/sessions/new.html.erb
 
 ```
 <div class="container">
