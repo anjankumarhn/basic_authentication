@@ -46,6 +46,29 @@ end
 
 Create a new folder users under apps/views & add a new.html.erb template for form
 
+```
+<div class="container">
+  <div class="sign_up" style="margin-left: 200px;margin-top: 100px;">
+    <h3>Sign up form</h3>
+      <%= form_for @user, :url => users_path, :method => "POST" do |f| %>
+	     <%= f.label "Name"%>
+       <%= f.text_field :name, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Email"%>
+       <%= f.text_field :email, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Password"%>
+       <%= f.password_field :password, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Confirm Password"%>
+       <%= f.password_field :password_confirmation, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.submit "Sign Up", :class=>"btn btn-primary"  %>
+      <% end %>
+  </div>
+</div>
+```
+
 Create a server side validation for User columns in User model.
 
 ```
@@ -102,6 +125,25 @@ resources :sessions, :only => [:new, :create, :destroy]
 Added a new, create & destroy action in sessions controller
 
 Create a sign in form in sessions new template app/views/sessions/new
+
+```
+<div class="container">
+	<div class="sign_up" style="margin-left: 200px;margin-top: 100px;">
+    <h3>Sign up form</h3>
+    <%= form_for :user, url: '/sessions' do |f| %>
+      <br>
+      <%= f.label "Email"%>
+      <%= f.text_field :email, :class =>"form-control", :required => :true %>
+      <br>
+      <%= f.label "Password"%>
+      <%= f.password_field :password, :class =>"form-control", :required => :true %>
+      <br>
+      <%= f.submit "Sign In", :class=>"btn btn-primary"  %>&nbsp&nbsp&nbsp&nbsp
+      <%= link_to "Sign Up", new_user_path, :class=>"btn btn-primary"  %>
+    <% end %>
+  </div>
+</div>
+```
 
 Make the sign in path as the root
 
