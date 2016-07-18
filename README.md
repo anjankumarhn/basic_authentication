@@ -1,4 +1,4 @@
-# Basic Authentication in Rails
+# Basic sign up and sign in logics in Rails
 Configured postgres database and added bcrypt for password secure:
 
 ```ruby
@@ -61,17 +61,17 @@ Added a create action to users controller
 
 ```
 def create
-		@user = User.new(user_params)
-		if @user.valid?
-			@user.save!
-			flash[:success] = "User signed up succssfully!"
-			session[:user_id] = @user.id
-			redirect_to users_path
-		else
-			flash[:error] = @user.errors.full_messages
-			render :new
-		end
+	@user = User.new(user_params)
+	if @user.valid?
+		@user.save!
+		flash[:success] = "User signed up succssfully!"
+		session[:user_id] = @user.id
+		redirect_to users_path
+	else
+		flash[:error] = @user.errors.full_messages
+		render :new
 	end
+end
 ```
 
 Added a filter for index action in users controller
