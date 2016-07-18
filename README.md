@@ -139,3 +139,15 @@ Sign In logics are in sessions controller and views
 Sign Up logics are in users controller and views
 
 Filter in application controller
+
+#Contributor
+
+[Facebook][1]
+[Twitter][2]
+[Linkedin][3]
+[ABout Me][4]
+
+[1]: https://www.facebook.com/anjan.gowdamandya
+[2]: https://twitter.com/aknagaraja
+[3]: https://in.linkedin.com/in/anjankumar-h-n-882166b8
+[4]: https://about.me/AnjanGowda
