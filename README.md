@@ -148,7 +148,7 @@ Filter in application controller
 
 [Linkedin][3]
 
-[ABout Me][4]
+[About Me][4]
 
 [1]: https://www.facebook.com/anjan.gowdamandya
 [2]: https://twitter.com/aknagaraja
