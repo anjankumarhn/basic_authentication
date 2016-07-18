@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="sign_up" style="margin-left: 200px;margin-top: 100px;">
+    <h3>Sign up form</h3>
+    <%= form_for :user, url: '/sessions' do |f| %>
+      <br>
+      <%= f.label "Email"%>
+      <%= f.text_field :email, :class =>"form-control", :required => :true %>
+      <br>
+      <%= f.label "Password"%>
+      <%= f.password_field :password, :class =>"form-control", :required => :true %>
+      <br>
+      <%= f.submit "Sign In", :class=>"btn btn-primary"  %>&nbsp&nbsp&nbsp&nbsp
+      <%= link_to "Sign Up", new_user_path, :class=>"btn btn-primary"  %>
+    <% end %>
+  </div>
+</div>

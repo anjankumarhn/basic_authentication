@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="sign_up" style="margin-left: 200px;margin-top: 100px;">
+    <h3>Sign up form</h3>
+      <%= form_for @user, :url => users_path, :method => "POST" do |f| %>
+	     <%= f.label "Name"%>
+       <%= f.text_field :name, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Email"%>
+       <%= f.text_field :email, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Password"%>
+       <%= f.password_field :password, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.label "Confirm Password"%>
+       <%= f.password_field :password_confirmation, :class =>"form-control", :required => :true %>
+       <br>
+       <%= f.submit "Sign Up", :class=>"btn btn-primary"  %>
+      <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h3>Hi <%= @current_user.name %>, you will come to this page only if you are signed up/in.</h3> 
+<%= link_to 'Log out', session_path(@current_user), :method => :delete, :class=>"btn btn-primary" %>
+<hr>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>email</th>
+	</tr>
+<% @users.each do |user| %>
+	<tr>
+		<td><%= user.id %></td>
+		<td><%= user.name %></td>
+		<td><%= user.email %></td>
+	</tr>
+<% end %>
+</table>
