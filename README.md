@@ -29,6 +29,7 @@ Create a controller users and add a new and create action for sign up action
 ```
 bundle exec rails g controller users
 ```
+
 Create routes for the users by adding following in config/routes.rb
 
 ```
@@ -42,15 +43,16 @@ def new
 	@user = User.new
 end
 ```
+
 Create a new folder users under apps/views & add a new.html.erb template for form
 
 Create a server side validation for User columns in User model.
 
 ```
-validates :Name, presence: true, :length =>{ :minimum => 2, :maximum => 16 }
-validates :email,  :presence => true, :length => {:minimum => 3, :maximum => 254},
-                :uniqueness => true,
-                :email => true
+validates :name, presence: true, :length =>{ :minimum => 2, :maximum => 16 }
+validates :email, :presence => true, :length => {:minimum => 3, :maximum => 254}
+validates_uniqueness_of :email
+validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 validates :password, presence: true, :length =>{ :minimum => 6, :maximum => 16 }
 validates :password_confirmation, presence: true, confirmation: true
 ```
@@ -71,6 +73,7 @@ def create
 		end
 	end
 ```
+
 Added a filter for index action in users controller
 
 ```
@@ -85,12 +88,13 @@ def require_session
   		flash[:error] = "Need to login"
   		redirect_to new_users_path
   	end
-  end
+ end
 ```
 
 Create a session controller for sign in
 
 Create a session routes only for new, create & destroy in config/routes.rb
+
 ```
 resources :sessions, :only => [:new, :create, :destroy]
 ```
@@ -99,14 +103,35 @@ Added a new, create & destroy action in sessions controller
 
 Create a sign in form in sessions new template app/views/sessions/new
 
-Make the sign in path as the root.
+Make the sign in path as the root
+
 ```
 root :to => "sessions#new"
 ```
+
 Write a session create logic inside a sessions/create action
+
+```
+def create
+    user = User.find_by_email(user_params[:email])
+  	if user && user.authenticate(user_params[:password])
+      session[:user_id] = user.id
+      redirect_to users_path, :notice => "Logged in successfully"
+    else
+      flash.now[:alert] = "Invalid login/password combination"
+      render :action => 'new'
+    end
+end
+```
 
 Write a logout logic in sessions/destroy action
 
+```
+def destroy
+   reset_session
+   redirect_to root_path, notice: 'Logged out'
+end
+```
 
 # The main logics are 
 Sign In logics are in sessions controller and views
